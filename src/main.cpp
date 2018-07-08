@@ -2,20 +2,21 @@
 #include <thread>
 #include <vector>
 #include <mutex>
+#include "MTVector.h"
 
-constexpr uint32_t MONEY_PER_OPERATION = 10000;
+constexpr uint32_t MONEY_PER_OPERATION = 1000;
 constexpr uint32_t N_THREADS = 20;
-constexpr uint32_t TOTAL_MONEY =MONEY_PER_OPERATION * N_THREADS;
+constexpr uint32_t TOTAL_MONEY = MONEY_PER_OPERATION * N_THREADS;
 
 class Wallet {
 private:
-    uint32_t _money = 0;
+    MTVector<int> _money;
 public:
     Wallet (){};
-    const uint32_t getMoney() const {return _money;}
+    const uint32_t getMoney() {return _money.size();}
     void addMoney(const uint32_t amount) {
         for (uint32_t i = 0; i < amount; i++) {
-            _money++;
+            _money.push_back(i);
         }
     }
 };
