@@ -3,4 +3,4 @@ project(multithreadVector)
 
 set(CMAKE_CXX_STANDARD 11)
 
-add_executable(multithreadVector main.cpp)
+add_executable(multithreadVector src/main.cpp src/MTVector.h)
